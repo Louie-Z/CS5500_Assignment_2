@@ -34,6 +34,57 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
   return (
     <div className="buttons">
       <div className="buttons-row">
+      <Button
+          text="sin"
+          isDigit={true}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="sin-button"
+        />
+        <Button
+          text="cos"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="cos-button"
+        />
+        <Button
+          text="tan"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="tan-button"
+        />
+        <Button
+          text="sin⁻¹x"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="asin-button"
+        />
+        <Button
+          text="cos⁻¹x"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="acos-button"
+        />
+        <Button
+          text={"tan⁻¹x"}
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="atan-button"
+        />
+        <Button
+          text="+/-"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="negative-button"
+        />
+      </div>
+      <div className="buttons-row">
 
         <Button
           text="7"
@@ -69,6 +120,20 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           onClick={() => onCommandButtonClick(ButtonNames.clear)}
           className="button-control"
           dataTestId="clear-button"
+        />
+        <Button
+          text="x^(1/2)"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="squareRoot-button"
+        />
+        <Button
+          text="x^(1/3)"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="cubeRoot-button"
         />
       </div>
 
@@ -108,6 +173,20 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           className="button-operator"
           dataTestId="divide-button"
         />
+        <Button
+          text="x²"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="square-button"
+        />
+        <Button
+          text="x³"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="cube-button"
+        />
       </div>
 
       <div className="buttons-row">
@@ -146,7 +225,20 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           className="button-operator"
           dataTestId="subtract-button"
         />
-
+        <Button
+          text="1/x"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="reciprocol-button"
+        />
+        <Button
+          text="rand"
+          isDigit={false}
+          onClick={onButtonClick}
+          className="button-operator"
+          dataTestId="random-button"
+        />
       </div>
 
       <div className="buttons-row">
@@ -186,7 +278,6 @@ function KeyPad({ onButtonClick, onCommandButtonClick, currentlyEditing }: KeyPa
           dataTestId="edit-toggle-button"
         />
       </div>
-
     </div>
   );
 } // KeyPad
