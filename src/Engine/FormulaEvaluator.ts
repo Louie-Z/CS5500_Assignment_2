@@ -128,8 +128,73 @@ export class FormulaEvaluator {
    */
   private term(): number {
     let result = this.factor();
-    while (this._currentFormula.length > 0 && (this._currentFormula[0] === "*" || this._currentFormula[0] === "/")) {
+    const allowedOperators = ["*", "/", "x²", "x³", "1/x", "x^(1/2)", "x^(1/3)", "sin", "cos", "tan", "sin⁻¹x", "cos⁻¹x", "tan⁻¹x", "rand", "+/-"];
+    while (this._currentFormula.length > 0 && allowedOperators.includes(this._currentFormula[0])) {
       let operator = this._currentFormula.shift();
+      const unaryOperators = ["x²", "x³", "1/x", "x^(1/2)", "x^(1/3)", "sin", "cos", "tan", "sin⁻¹x", "cos⁻¹x", "tan⁻¹x", "rand", "+/-"];
+      if (unaryOperators.includes(operator)) {
+        if (this._errorOccured) {
+          this._errorOccured = false;
+          this._errorMessage = "";
+        }
+        if (operator === "x²") {
+          result = Math.pow(result, 2);
+        } else if (operator === "x³") {
+          result = Math.pow(result, 3);
+        } else if (operator === "1/x") {
+          if (result === 0) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.divideByZero;
+            this._lastResult = Infinity;
+            return Infinity;
+          } else {
+            result = 1 / result;
+          }
+        } else if (operator === "x^(1/2)") {
+          if (result < 0) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.negativeRoot;
+            this._lastResult = NaN;
+            return NaN;
+          } else {
+            result = Math.sqrt(result);
+          }
+        } else if (operator === "x^(1/3)") {
+          result = Math.cbrt(result);
+        } else if (operator === "sin") {
+          result = Math.sin(result);
+        } else if (operator === "cos") {
+          result = Math.cos(result);
+        } else if (operator === "tan") {
+          if (result === 90) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.tan90;
+            this._lastResult = NaN;
+            return NaN;
+          } else if (result === 270) {
+            this._errorOccured = true;
+            this._errorMessage = ErrorMessages.tan90;
+            this._lastResult = NaN;
+            return NaN;
+          }
+          result = Math.tan(result);
+        } else if (operator === "sin⁻¹x") {
+          result = Math.asin(result);
+        } else if (operator === "cos⁻¹x") {
+          result = Math.acos(result);
+        } else if (operator === "tan⁻¹x") {
+          result = Math.atan(result);
+        } else if (operator === "rand") {
+          if(result <= 1){
+            result = Math.random();
+          } else {
+            result = Math.floor(Math.random() * (result-1)) + 1;
+          }
+        } else if (operator === "+/-") {
+            result = result * -1;
+        }
+        continue;
+      }
       let factor = this.factor();
       if (operator === "*") {
         result *= factor;
