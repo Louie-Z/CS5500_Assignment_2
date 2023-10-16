@@ -35,7 +35,7 @@ export class FormulaEvaluator {
    * The grammar for the formula is:
    * formula = expression
    * expression = term { ("+" | "-") term }
-   * term = factor { ("*" | "/") factor }
+   * term = factor { ("*" | "/" | "x^2" | "x^3" | "1/x" | "x^(1/2)" | "x ^(1/3)" | "sin" | "cos" | "tan" | "sin^(-1)" | "cos^(-1)" | "tan^(-1)" | "Rand" | "+/-") factor }
    * factor = number | "(" expression ")" | cellReference
    * cellReference = a string of letters followed by a string of digits
    * 
@@ -105,6 +105,9 @@ export class FormulaEvaluator {
    * @returns The value of the factor in the tokenized formula
    */
   private expression(): number {
+    if (this._errorOccured) {
+      return this._lastResult;
+    }
     let result = this.term();
     while (this._currentFormula.length > 0 && (this._currentFormula[0] === "+" || this._currentFormula[0] === "-")) {
       let operator = this._currentFormula.shift();
@@ -127,6 +130,9 @@ export class FormulaEvaluator {
    *  
    */
   private term(): number {
+    if (this._errorOccured) {
+      return this._lastResult;
+    }
     let result = this.factor();
     const allowedOperators = ["*", "/", "x²", "x³", "1/x", "x^(1/2)", "x^(1/3)", "sin", "cos", "tan", "sin⁻¹x", "cos⁻¹x", "tan⁻¹x", "rand", "+/-"];
     while (this._currentFormula.length > 0 && allowedOperators.includes(this._currentFormula[0])) {
@@ -185,13 +191,9 @@ export class FormulaEvaluator {
         } else if (operator === "tan⁻¹x") {
           result = Math.atan(result);
         } else if (operator === "rand") {
-          if(result <= 1){
-            result = Math.random();
-          } else {
-            result = Math.floor(Math.random() * (result-1)) + 1;
-          }
+          result = Math.random();
         } else if (operator === "+/-") {
-            result = result * -1;
+          result = result * -1;
         }
         continue;
       }
@@ -221,6 +223,9 @@ export class FormulaEvaluator {
    * 
    */
   private factor(): number {
+    if (this._errorOccured) {
+      return this._lastResult;
+    }
     let result = 0;
     // if the formula is empty set errorOccured to true 
     // and set the errorMessage to "PARTIAL"
@@ -250,6 +255,8 @@ export class FormulaEvaluator {
       }
 
       // if the token is a cell reference get the value of the cell
+    } else if (token === "rand") {
+      result = Math.random();
     } else if (this.isCellReference(token)) {
       [result, this._errorMessage] = this.getCellValue(token);
 
