@@ -82,8 +82,8 @@ export class SpreadSheetController {
     // check to see if the user is editing another cell.
     if (this._contributingUsers.has(user)) {
       const userData = this._contributingUsers.get(user);
-      if (userData!.cellLabel !== '' && userData!.cellLabel !== cellLabel) {
-        this._cellsBeingEdited.delete(userData!.cellLabel);
+      if (userData!.cellLabel !== '' && userData!.cellLabel !== cellLabel && !this._cellsBeingEdited.has(userData!.cellLabel)) {
+          this._cellsBeingEdited.delete(userData!.cellLabel);
       }
       this.releaseEditAccess(user);
     }
@@ -137,7 +137,7 @@ export class SpreadSheetController {
     // if the user is editing a cell then free that one up
     const editingCell: string | undefined = this._contributingUsers.get(user)?.cellLabel;
     if (editingCell) {
-      if (this._cellsBeingEdited.has(editingCell)) {
+      if (this._cellsBeingEdited.has(editingCell) && (this._cellsBeingEdited.get(editingCell) === user)) {
         this._cellsBeingEdited.delete(editingCell);
       }
     }

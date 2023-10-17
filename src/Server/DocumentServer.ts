@@ -152,7 +152,12 @@ app.put('/document/cell/edit/:name', (req: express.Request, res: express.Respons
     const result = documentHolder.requestEditAccess(name, cell, userName);
     const documentJSON = documentHolder.getDocumentJSON(name, userName);
 
-    res.status(200).send(documentJSON);
+    console.log(result);
+    if (result === true) {
+        res.status(200).send(documentJSON);
+    }else{
+        res.status(400).send(userName + " is already editing this cell");
+    }
 });
 
 app.put('/document/cell/view/:name', (req: express.Request, res: express.Response) => {
@@ -176,7 +181,12 @@ app.put('/document/cell/view/:name', (req: express.Request, res: express.Respons
 
     const documentJSON = documentHolder.getDocumentJSON(name, userName);
 
-    res.status(200).send(documentJSON);
+    console.log(result);
+    if (result === true) {
+        res.status(200).send(documentJSON);
+    }else{
+        res.status(400).send(userName + " is already editing this cell");
+    }
 });
 
 app.put('/document/addtoken/:name', (req: express.Request, res: express.Response) => {
