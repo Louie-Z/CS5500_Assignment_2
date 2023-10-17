@@ -81,10 +81,10 @@ export class SpreadSheetController {
 
     // check to see if the user is editing another cell.
     if (this._contributingUsers.has(user)) {
-      const userData = this._contributingUsers.get(user);
-      if (userData!.cellLabel !== '' && userData!.cellLabel !== cellLabel && !this._cellsBeingEdited.has(userData!.cellLabel)) {
-          this._cellsBeingEdited.delete(userData!.cellLabel);
-      }
+      // const userData = this._contributingUsers.get(user);
+      // if (userData!.cellLabel !== '' && userData!.cellLabel !== cellLabel && !this._cellsBeingEdited.has(userData!.cellLabel)) {
+          // this._cellsBeingEdited.delete(userData!.cellLabel);
+      // }
       this.releaseEditAccess(user);
     }
 
