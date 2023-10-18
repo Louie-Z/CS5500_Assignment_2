@@ -37,5 +37,6 @@ export interface DocumentTransport {
   result: string;
   currentCell: string;
   isEditing: boolean;
+  holdedCellList: [];
 }
 

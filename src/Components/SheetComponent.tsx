@@ -14,12 +14,13 @@ interface SheetComponentProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   currentCell: string;
   currentlyEditing: boolean;
+  holdedCellList: [];
 } // interface SheetComponentProps
 
 
 
 
-function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }: SheetComponentProps) {
+function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, holdedCellList }: SheetComponentProps) {
 
   /**
    * 
@@ -35,13 +36,32 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
    * otherwise the cell will be rendered with the class name "cell"
    */
   function getCellClass(cell: string) {
+    // console.log("cell", holdedCellList);
+    let cellClass = "cell";
     if (cell === currentCell && currentlyEditing) {
       return "cell-editing";
     }
     if (cell === currentCell) {
       return "cell-selected";
     }
-    return "cell";
+    holdedCellList.forEach(item => {
+      if (cell===item[0] && cell !== currentCell) {
+        console.log("rename the class->cell-holded, for cell", cell);
+        cellClass = "cell-holded";
+      }
+    });
+    return cellClass;
+  }
+
+  function getEditorName(column: number, row: number) {
+    const cell = Cell.columnRowToCell(column, row);
+    let name = "";
+    holdedCellList.forEach(item => {
+      if (cell===item[0]) {
+        name = item[1];
+      }
+    });
+    return name;
   }
 
   return (
@@ -60,7 +80,7 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
           <tr key={rowIndex}>
             <td> {Cell.rowNumberToName(rowIndex)}</td>
             {row.map((cell, colIndex) => (
-              <td key={colIndex}>
+              <td key={colIndex} style={{position:"relative"}}>
                 <button
                   onClick={onClick}
                   value={cell}
@@ -69,7 +89,10 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing }:
                   className={(getCellClass(Cell.columnRowToCell(colIndex, rowIndex)))}
                 >
                   {cell}
-                </button>
+                </button> 
+                <label className="user-label">{
+                  getEditorName(colIndex, rowIndex)}
+                </label>
 
               </td>
             ))}
