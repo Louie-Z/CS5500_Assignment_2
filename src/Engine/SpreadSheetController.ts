@@ -334,9 +334,9 @@ export class SpreadSheetController {
     container.formula = this.getFormulaStringForUser(user);
     container.result = this.getResultStringForUser(user);
     container.isEditing = userData.isEditing;
-    container.holdingCellList = [];
+    container.holdedCellList = [];
     this._cellsBeingEdited.forEach((value, key) => {
-      container.holdingCellList.push([key, value]);
+      container.holdedCellList.push([key, value]);
     });
     return container;
   }
