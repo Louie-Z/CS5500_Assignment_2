@@ -172,12 +172,12 @@ export class FormulaEvaluator {
         } else if (operator === "cos") {
           result = Math.cos(result);
         } else if (operator === "tan") {
-          if (result === 90) {
+          if (result === Math.PI / 2) {
             this._errorOccured = true;
             this._errorMessage = ErrorMessages.tan90;
             this._lastResult = NaN;
             return NaN;
-          } else if (result === 270) {
+          } else if (result === Math.PI * 3 / 2) {
             this._errorOccured = true;
             this._errorMessage = ErrorMessages.tan90;
             this._lastResult = NaN;
@@ -225,7 +225,7 @@ export class FormulaEvaluator {
   private factor(): number {
     if (this._errorOccured) {
       return this._lastResult;
-    }
+    } 
     let result = 0;
     // if the formula is empty set errorOccured to true 
     // and set the errorMessage to "PARTIAL"
