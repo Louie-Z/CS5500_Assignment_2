@@ -36,10 +36,31 @@ This document serves as documentation of the teamwork and individual contributio
 
     Added all frontend components and backend implementations for additional functionalities.
 
-### Team Member 2: [Name]
+### Team Member 2: Yiwei Tao
 
+#### Role: Algorithmic Engineer
 
-### Team Member 3: [Name]
+**Summary of Contributions:**
+
+- Discussed and designed the algorithmic logic of the calculator with teammates.
+- Completed part of the code.
+
+**Git Check-ins:**
+
+- Xilong, Yu, and I were responsible for the front-end and back-end coding. Following the algorithm design, I completed a portion of the coding work. To minimize merge conflicts, I zipped my code and forwarded it to Xilong. He then integrated it and pushed it directly to GitHub, resulting in no commits from my end.
+
+### Team Member 3: Haobo Zhang
+
+#### Role: full stack developer of fileselector
+
+**Summary of Contributions:**
+
+- Added a home page that displays a list of all files inside the folder "Documents"
+
+**Git Check-ins:**
+
+- all commits in branch "fileselector"
+- merge all different parts from branches to "main"
 
 
 ### Team Member 4: [Name]
@@ -67,9 +88,10 @@ This documentation aims to provide an accurate record of each team member's cont
 **Approved by:**
 
 Xilong Cai
-[Team Member 2]
-[Team Member 3]
-[Team Member 4]
-[Team Member 5]
+Yiwei Tao
+Haobo Zhang	
+Yu Wu	
+Xinchang Tong
+
 
 10/22/2023
