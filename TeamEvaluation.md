@@ -15,8 +15,26 @@ This document serves as documentation of the teamwork and individual contributio
 
 ## Team Member Contributions
 
-### Team Member 1: [Name]
+### Team Member 1: Xilong Cai
 
+#### Role: full stack developer of functionality
+
+**Summary of Contributions:**
+
+- Added the buttons in frontend for additional functionalities.
+- Implemented the functionalities in backend.
+
+**Git Check-ins:**
+
+- 4f9880c revise the logic of sin cos and tan
+
+    Initially it is calculated by degree. Now it is by radian.
+- 0369bf6 revise logic of rand as the ios calculator and fix bugs
+
+    Initially rand will accept a number and return a random value from 0 to that number. Now it will only return a random number from 0 to 1. Besides, fixed the bug that the formula evaluator will return the value of the suffix of the formula if the formula is invalid but the suffix is valid.
+- 6e2a2e0 add functionalities needed
+
+    Added all frontend components and backend implementations for additional functionalities.
 
 ### Team Member 2: [Name]
 
@@ -28,3 +46,30 @@ This document serves as documentation of the teamwork and individual contributio
 
 
 ### Team Member 5: [Name]
+
+#### Role: [e.g., Project Manager]
+
+**Summary of Contributions:**
+
+- Describe the specific tasks and responsibilities you had in terms of project management, coordination, and communication within the team.
+
+**Git Check-ins:**
+
+- List any relevant Git check-ins related to project management tasks.
+- Explain how these align with your contributions.
+
+## Conclusion
+
+This documentation aims to provide an accurate record of each team member's contributions and their alignment with Git check-ins. It promotes transparency and accountability within the team and ensures that the work performed during this project is well-documented.
+
+[Additional comments, reflections, or any other relevant information can be added here.]
+
+**Approved by:**
+
+Xilong Cai
+[Team Member 2]
+[Team Member 3]
+[Team Member 4]
+[Team Member 5]
+
+10/22/2023
