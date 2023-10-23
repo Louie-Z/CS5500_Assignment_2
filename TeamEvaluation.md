@@ -61,24 +61,49 @@ This document serves as documentation of the teamwork and individual contributio
 
 - all commits in branch "fileselector"
 - merge all different parts from branches to "main"
+- 
 
+### Team Member 4: Yu Wu
 
-### Team Member 4: [Name]
-
-
-### Team Member 5: [Name]
-
-#### Role: [e.g., Project Manager]
+#### Role: Code Reviewer
 
 **Summary of Contributions:**
 
-- Describe the specific tasks and responsibilities you had in terms of project management, coordination, and communication within the team.
+- Engaged in discussions to outline the project requirements and calculator functionalities.
+
+- Participated in reviewing the code, ensuring that it adheres to best practices and meets the project specifications.Worked with Xilong to address any issues in the functionality part, providing suggestions for improvement.
 
 **Git Check-ins:**
 
-- List any relevant Git check-ins related to project management tasks.
-- Explain how these align with your contributions.
+- Review the functionality part and directly worked and reviewed the code with Xilong.
 
+
+### Team Member 5: Xinchang Tong
+
+#### Role: Fullstack engineer for the cell editing
+
+**Summary of Contributions:**
+
+- Managed the development of the cell editing feature, ensuring integration with the application.
+Providing updates and addressing issues promptly with team members.
+- Implemented backend logic for cell editing and developed frontend components.
+- Conducted thorough testing and contributed to project documentation.
+
+ 
+
+**Git Check-ins:**
+
+ 
+
+- aaf1fc4
+- Managing cell editing in a spreadsheet application, ensuring clear communication through comments and logical structuring. Backend logic and frontend components are integrated.
+
+ 
+
+- 7a92264
+- Applied cell editing and user interaction. The addition of a new state “holdedCellList” and its integration features implementation.
+
+ 
 ## Conclusion
 
 This documentation aims to provide an accurate record of each team member's contributions and their alignment with Git check-ins. It promotes transparency and accountability within the team and ensures that the work performed during this project is well-documented.
