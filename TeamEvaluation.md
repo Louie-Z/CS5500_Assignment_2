@@ -1,11 +1,11 @@
-**Project Name:** [Project Name]
+**Project Name:** CalcSheet
 
-**Team Name:** [Team Name]
+**Team Name:** Team Name
 
-**Date:** [Date]
+**Date:** 10/22/2023
 
 **Team Members:**
-1. [Team Member 1]
+1. Xilong Cai
 2. [Team Member 2]
 3. [Team Member 3]
 4. [Team Member 4]
@@ -17,20 +17,26 @@ This document serves as documentation of the teamwork and individual contributio
 
 ## Team Member Contributions
 
-### Team Member 1: [Name]
+### Team Member 1: Xilong Cai
 
-#### Role: [e.g., Frontend Developer]
+#### Role: full stack developer of functionality
 
 **Summary of Contributions:**
 
-- Describe the specific tasks and responsibilities you had on the project.
-- Provide a summary of your contributions, including any significant code changes, features, or bug fixes you implemented.
-- Mention the dates and Git commits associated with your work.
+- Added the buttons in frontend for additional functionalities.
+- Implemented the functionalities in backend.
 
 **Git Check-ins:**
 
-- List the Git commit messages and dates associated with your work.
-- Explain how these commits align with your contributions.
+- 4f9880c revise the logic of sin cos and tan
+
+    Initially it is calculated by degree. Now it is by radian.
+- 0369bf6 revise logic of rand as the ios calculator and fix bugs
+
+    Initially rand will accept a number and return a random value from 0 to that number. Now it will only return a random number from 0 to 1. Besides, fixed the bug that the formula evaluator will return the value of the suffix of the formula if the formula is invalid but the suffix is valid.
+- 6e2a2e0 add functionalities needed
+
+    Added all frontend components and backend implementations for additional functionalities.
 
 ### Team Member 2: [Name]
 
@@ -96,10 +102,10 @@ This documentation aims to provide an accurate record of each team member's cont
 
 **Approved by:**
 
-[Team Member 1]
+Xilong Cai
 [Team Member 2]
 [Team Member 3]
 [Team Member 4]
 [Team Member 5]
 
-[Date]
+10/22/2023
