@@ -52,6 +52,7 @@ class SpreadSheetClient {
             currentCell: 'A1',
             isEditing: false,
             cells: new Map<string, CellTransport>(),
+            holdedCellList: [],
         };
         for (let row = 0; row < document.rows; row++) {
             for (let column = 0; column < document.columns; column++) {
@@ -192,6 +193,10 @@ class SpreadSheetClient {
     public getEditStatus(): boolean {
         return this._document.isEditing;
     }
+
+    public getHoldedCellList(): [] {
+        return this._document.holdedCellList;
+      }
 
     /**
      * ask for permission to edit a cell
@@ -366,6 +371,7 @@ class SpreadSheetClient {
         const columns = document.columns;
         const rows = document.rows;
         const isEditing = document.isEditing;
+        const holdedCellList = document.holdedCellList;
 
 
 
@@ -379,6 +385,7 @@ class SpreadSheetClient {
             rows: rows,
             isEditing: isEditing,
             cells: new Map<string, CellTransport>(),
+            holdedCellList: holdedCellList,
         };
         // create the cells
         const cells = document.cells as unknown as CellTransportMap;
