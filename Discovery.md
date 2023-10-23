@@ -14,8 +14,15 @@ When a team undertakes a new task the first step in the process is often called 
     - display them on a separate page
 
 ### Plan of Action
-
-
+    1. Frontend Development:
+        Create a dedicated web page for the file selector.
+        Design an intuitive user interface using HTML, CSS, and JavaScript.
+    2. Document Listing:
+        Develop logic for dynamic population of the page with documents from the backend.
+        Organize documents in a user-friendly manner, possibly as a table or list, including document details like                 name, date, and metadata.
+    3. User Interaction:
+        Implement interactions, such as clicking on documents for access or download.
+        Ensure a seamless user experience with clear navigation.
 
 ## Sub-Project 2: [Sub-Project Name 2]
 
