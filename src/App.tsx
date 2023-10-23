@@ -2,22 +2,45 @@
  * @jest-environment jsdom
  */
 
-import { useState, useEffect } from 'react';
-import './App.css';
-import SpreadSheet from './Components/SpreadSheet';
+import { useState, useEffect } from "react";
+import "./App.css";
+import SpreadSheet from "./Components/SpreadSheet";
+import React from "react";
+import {
+  Route,
+  Routes,
+  BrowserRouter,
+  useNavigate,
+} from "react-router-dom";
+import FileSelector from "./Components/FileSelector";
 
 function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Routes>
+            <Route path="/" element={<FileSelector />} />
+            <Route path="/:doc" element={<SpreadSheetWrapper />} />
+          </Routes>
+        </header>
+      </div>
+    </BrowserRouter>
+  );
+}
 
+const SpreadSheetWrapper: React.FC = () => {
+  const navigate = useNavigate();
+  const [documentName, setDocumentName] = useState<string>("");
 
-  const [documentName, setDocumentName] = useState(getDocumentNameFromWindow());
-  //const memoryUsage = process.memoryUsage();
   useEffect(() => {
-    if (window.location.href) {
-      setDocumentName(getDocumentNameFromWindow());
+    const docNameFromURL = getDocumentNameFromWindow();
+    if (!docNameFromURL) {
+      navigate("/");
+    } else {
+      setDocumentName(docNameFromURL);
     }
-  }, [getDocumentNameFromWindow]);
-
-
+  }, [navigate]);
 
   // for the purposes of this demo and for the final project
   // we will use the window location to get the document name
@@ -46,34 +69,7 @@ function App() {
 
   }
 
-  //callback function to reset the current URL to have the document name
-  function resetURL(documentName: string) {
-    // get the current URL
-    const currentURL = window.location.href;
-    // remove anything after the last slash
-    const index = currentURL.lastIndexOf('/');
-    const newURL = currentURL.substring(0, index + 1) + documentName;
-    // set the URL
-    window.history.pushState({}, '', newURL);
-    // now reload the page
-    window.location.reload();
-  }
-
-  if (documentName === '') {
-    setDocumentName('test');
-    resetURL('test');
-  }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <SpreadSheet documentName={documentName} />
-      </header>
-
-    </div>
-  );
-}
+  return <SpreadSheet documentName={documentName} />;
+};
 
 export default App;
-
-
