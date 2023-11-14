@@ -16,7 +16,7 @@ const chatClient = new ChatClient();
 
 function ChatComponent({userName}: ChatComponentProps) {
     const [messages, setMessages] = useState<MessageContainer[]>([]);
-    const [mostRecentId, setMostRecentId] = useState<number>(0);
+    const [mostRecentId, setMostRecentId] = useState<number>(-1);
     const [message, setMessage] = useState<string>("please enter a message");
     const bottomRef = useRef(null);
 
