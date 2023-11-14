@@ -118,6 +118,11 @@ class ChatClient {
             return;
           }
 
+          if (message === "") {
+            alert("Please enter a message");
+            return;
+          }
+
         console.log("sentMessage()");
         const url = `http://localhost:3005/message/${user}/${message}`;
         //const url = `https://pagination-demo.onrender.com/message/${user}/${message}`

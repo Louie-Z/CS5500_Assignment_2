@@ -72,9 +72,10 @@ function ChatComponent({userName}: ChatComponentProps) {
                 placeholder={message}
                 onKeyUp={(event) => {
                     localMessage = event.currentTarget.value;
+                    localUser = userName;
                     setMessage(event.currentTarget.value);
                     if (event.key === "Enter") {
-                        chatClient.sendMessage(localUser, localMessage);
+                        chatClient.sendMessage(localMessage, localUser);
                         // clear the message
                         event.currentTarget.value = "";
                         setMessage("");
