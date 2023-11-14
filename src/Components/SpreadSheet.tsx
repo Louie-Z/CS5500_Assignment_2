@@ -8,6 +8,7 @@ import SheetHolder from "./SheetHolder";
 import { ButtonNames } from "../Engine/GlobalDefinitions";
 import ServerSelector from "./ServerSelector";
 
+import ChatComponent from './ChatComponent';
 
 interface SpreadSheetProps {
   documentName: string;
@@ -201,6 +202,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
         onCommandButtonClick={onCommandButtonClick}
         currentlyEditing={currentlyEditing}></KeyPad>
       {getUserLogin()}
+      <ChatComponent userName={userName}></ChatComponent>
       <ServerSelector serverSelector={serverSelector} serverSelected={serverSelected} />
     </div>
   )
