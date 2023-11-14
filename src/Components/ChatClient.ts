@@ -100,7 +100,7 @@ class ChatClient {
         console.log("getMessagesContinuously()");
         setInterval(() => {
             this.getMessages();
-        }, 250);
+        }, 200);
 
     }
 
