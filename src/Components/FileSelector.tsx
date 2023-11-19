@@ -8,7 +8,7 @@ const FileSelector: React.FC = () => {
     (async () => {
       try {
         const response = await fetch(
-          `https://spreadsheet-server:${serverPort}/documents`
+          `https://spreadsheet-server.onrender.com/documents`
         );
         if (!response.ok) {
           throw new Error("Invalid network response" + response.statusText);
