@@ -72,7 +72,8 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
   const highlightColors = ['red', 'green', 'yellow'];
 
   return (
-    <table className="table">
+    <div>
+      <table className="table">
       <tbody>
         {/*add a row with column cellsValues */}
         <tr>
@@ -107,13 +108,15 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
           </tr>
         ))}
       </tbody>
-      <div>
-        {ColorList({
-                highlightColors: highlightColors,
-                onSelectColor: (color: string) => setSelectedColor(color)
-        })}
-      </div>
+      
     </table>
+    <div>
+      {ColorList({
+              highlightColors: highlightColors,
+              onSelectColor: (color: string) => setSelectedColor(color)
+      })}
+    </div>
+    </div>
   );
 } // SheetComponent
 

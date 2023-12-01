@@ -13,18 +13,28 @@ function ColorList({ highlightColors, onSelectColor }: ColorListProps) {
   return (
     <div >
         <text>Select a highlight color: currently using <text style={{ color }}>{color}</text></text> 
-        <ul className='color-board'>
+        <div className='color-board'>
         
             {highlightColors.map((color) => (
-            <text
-            key={color} 
-            onClick={() => {onSelectColor(color); setColor(color);}}
-            style={{ color }}
-            >
+            
+              <button
+                style={{ backgroundColor: color,
+                color: 'black',
+                fontSize: '20px',
+                padding: '10px 20px',
+                width: '100px',
+                margin: '10px',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',}}
+                key={color} 
+                onClick={() => {onSelectColor(color); setColor(color);}}
+              >
                 {color + " "}
-            </text>
+            </button>
+            
             ))}
-        </ul>
+        </div>
     </div>
   );
 };
