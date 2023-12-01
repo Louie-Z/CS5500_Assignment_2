@@ -4,6 +4,8 @@ import Cell from "../Engine/Cell";
 
 import CalcuCell from "./CalcuCell";
 
+import ColorList from "./ColorList";
+
 import "./SheetComponent.css";
 
 // a component that will render a two dimensional array of cells
@@ -66,6 +68,9 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
     return name;
   }
 
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const highlightColors = ['red', 'green', 'yellow'];
+
   return (
     <table className="table">
       <tbody>
@@ -89,7 +94,8 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
                   cell: cell,
                   celllabel: Cell.columnRowToCell(colIndex, rowIndex),
                   datatestid: Cell.columnRowToCell(colIndex, rowIndex),
-                  className: (getCellClass(Cell.columnRowToCell(colIndex, rowIndex)))
+                  className: (getCellClass(Cell.columnRowToCell(colIndex, rowIndex))),
+                  color: selectedColor || 'red'
                 })}
 
                 <label className="user-label">{
@@ -101,6 +107,12 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
           </tr>
         ))}
       </tbody>
+      <div>
+        {ColorList({
+                highlightColors: highlightColors,
+                onSelectColor: (color: string) => setSelectedColor(color)
+        })}
+      </div>
     </table>
   );
 } // SheetComponent

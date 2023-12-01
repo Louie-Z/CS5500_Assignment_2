@@ -6,9 +6,10 @@ interface CellButtonProps {
     celllabel: string;
     datatestid: string;
     className: string;
+    color: string;
   }
 
-function CalcuCell({ onClick, cell, celllabel, datatestid, className }: CellButtonProps) {
+function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: CellButtonProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [isHKeyPressed, setIsHKeyPressed] = useState(false);
     const [isShiftHKeyPressed, setisShiftHKeyPressed] = useState(false);//
@@ -59,7 +60,7 @@ function CalcuCell({ onClick, cell, celllabel, datatestid, className }: CellButt
             onMouseLeave={() => {setIsHovered(false); console.log("not-hovered")}}
             
             style={{
-            backgroundColor: isShiftHKeyPressed || (isHovered && isHKeyPressed )? 'red' : ''
+            backgroundColor: isShiftHKeyPressed || (isHovered && isHKeyPressed )? color : ''
             }}
             
         >
