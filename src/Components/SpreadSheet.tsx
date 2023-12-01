@@ -193,6 +193,7 @@ function SpreadSheet({ documentName }: SpreadSheetProps) {
       <Formula formulaString={formulaString} resultString={resultString}  ></Formula>
       <Status statusString={statusString}></Status>
       {<h2>Hello {userName}</h2>}
+      {<h5>Press and hold H to highlight cell pointed by your mouse</h5>}
       {<SheetHolder cellsValues={cells}
         onClick={onCellClick}
         currentCell={currentCell}
