@@ -66,34 +66,6 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
     return name;
   }
 
-
-  // const [isHovered, setIsHovered] = useState(false);
-  // const [isHKeyPressed, setIsHKeyPressed] = useState(false);
-
-  // useEffect(() => {
-  //   const handleKeyDown = (event: KeyboardEvent) => {
-  //     if (event.key === 'h') {
-  //       setIsHKeyPressed(true);
-  //     }
-  //   };
-
-  //   const handleKeyUp = (event: KeyboardEvent) => {
-  //     if (event.key === 'h') {
-  //       setIsHKeyPressed(false);
-  //     }
-  //   };
-
-  //   document.addEventListener('keydown', handleKeyDown);
-  //   document.addEventListener('keyup', handleKeyUp);
-
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyDown);
-  //     document.removeEventListener('keyup', handleKeyUp);
-  //   };
-  // }, []); // Only run this effect once when the component mounts
-
-
-
   return (
     <table className="table">
       <tbody>
@@ -111,26 +83,7 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
             <td> {Cell.rowNumberToName(rowIndex)}</td>
             {row.map((cell, colIndex) => (
               <td key={colIndex} style={{position:"relative"}}>
-
-
-                {/* <button
-                  onClick={onClick}
-                  value={cell}
-                  cell-label={Cell.columnRowToCell(colIndex, rowIndex)}
-                  data-testid={Cell.columnRowToCell(colIndex, rowIndex)}
-                  className={(getCellClass(Cell.columnRowToCell(colIndex, rowIndex)))}
-
-
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  style={{
-                    backgroundColor: isHovered && isHKeyPressed ? 'red' : '',
-                    // Add other styles as needed
-                  }} 
-                >
-                  {cell}
-                </button>  */}
-
+                
                 {CalcuCell({
                   onClick: onClick,
                   cell: cell,
