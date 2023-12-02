@@ -7,12 +7,12 @@ interface CellButtonProps {
     datatestid: string;
     className: string;
     color: string;
-  }
+}
 
 function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: CellButtonProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [isHKeyPressed, setIsHKeyPressed] = useState(false);
-    const [isShiftHKeyPressed, setisShiftHKeyPressed] = useState(false);//
+    const [isHighlighted, setIsHighlighted] = useState(false);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -20,53 +20,45 @@ function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: C
                 setIsHKeyPressed(true);
             }
         };
-    
+
         const handleKeyUp = (event: KeyboardEvent) => {
             if (event.key === 'h') {
                 setIsHKeyPressed(false);
             }
         };
 
-        //
-        const handleKeyPress = (event: KeyboardEvent) => {
-            if (event.key === 'm' && isHovered) {
-                console.log("m is pressed");
-                setisShiftHKeyPressed((prev) => !prev);
-            }
-        };
-    
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
-        //
-        window.addEventListener('keydown', handleKeyPress);
-    
-        return () => {
-          document.removeEventListener('keydown', handleKeyDown);
-          document.removeEventListener('keyup', handleKeyUp);
-          window.removeEventListener('keydown', handleKeyPress);
-        };
-        }, []); 
 
-        
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
+
+    const handleCellClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (isHKeyPressed) {
+            setIsHighlighted(prev => !prev);
+        }
+        onClick(event);
+    };
+
     return (
         <button
-            onClick={onClick}
+            onClick={handleCellClick}
             value={cell}
             cell-label={celllabel}
             data-testid={datatestid}
             className={className}
-
-            onMouseEnter={() => {setIsHovered(true); console.log("hovered")}}
-            onMouseLeave={() => {setIsHovered(false); console.log("not-hovered")}}
-            
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{
-            backgroundColor: isShiftHKeyPressed || (isHovered && isHKeyPressed )? color : ''
+                backgroundColor: isHighlighted ? color : ''
             }}
-            
         >
             {cell}
         </button> 
-  );
+    );
 }
 
 export default CalcuCell;
