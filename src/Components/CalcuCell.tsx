@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 interface CellButtonProps {
@@ -6,30 +7,22 @@ interface CellButtonProps {
     celllabel: string;
     datatestid: string;
     className: string;
-    color: string;
+    color: string; 
 }
 
 function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: CellButtonProps) {
-    const [isHovered, setIsHovered] = useState(false);
     const [isHKeyPressed, setIsHKeyPressed] = useState(false);
-    const [isHighlighted, setIsHighlighted] = useState(false);
+    const [highlightColor, setHighlightColor] = useState<string | null>(null);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'h') {
-                setIsHKeyPressed(true);
-            }
+            if (event.key === 'h') setIsHKeyPressed(true);
         };
-
         const handleKeyUp = (event: KeyboardEvent) => {
-            if (event.key === 'h') {
-                setIsHKeyPressed(false);
-            }
+            if (event.key === 'h') setIsHKeyPressed(false);
         };
-
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
-
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.removeEventListener('keyup', handleKeyUp);
@@ -38,7 +31,7 @@ function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: C
 
     const handleCellClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (isHKeyPressed) {
-            setIsHighlighted(prev => !prev);
+            setHighlightColor(prev => prev === null ? color : null);
         }
         onClick(event);
     };
@@ -50,11 +43,7 @@ function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: C
             cell-label={celllabel}
             data-testid={datatestid}
             className={className}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            style={{
-                backgroundColor: isHighlighted ? color : ''
-            }}
+            style={{ backgroundColor: highlightColor || '' }}
         >
             {cell}
         </button> 
@@ -62,3 +51,4 @@ function CalcuCell({ onClick, cell, celllabel, datatestid, className, color }: C
 }
 
 export default CalcuCell;
+

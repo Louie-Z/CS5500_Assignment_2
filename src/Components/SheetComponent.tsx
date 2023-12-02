@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 
 import Cell from "../Engine/Cell";
 
@@ -110,7 +110,6 @@ function SheetComponent({ cellsValues, onClick, currentCell, currentlyEditing, h
       </tbody>
       
     </table>
-    
     <div>
       {ColorList({
               highlightColors: highlightColors,
